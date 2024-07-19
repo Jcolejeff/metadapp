@@ -1,0 +1,68 @@
+// Abstract
+@use "../styles/abstracts/mixins" as *;
+
+//Base
+@use "../styles/base/reset" as *;
+
+// Tailwind base
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+//Inserting custom styles to tailwind via @layer directive
+@layer utilities {
+	* {
+		&::-webkit-scrollbar-thumb {
+			width: 4px;
+			height: 4px;
+		}
+
+		&::-webkit-scrollbar-track {
+			width: 4px;
+			height: 4px;
+		}
+	}
+
+	.no-scrollbar {
+		scrollbar-width: 0 !important;
+
+		&::-webkit-scrollbar {
+			display: none !important;
+		}
+		div {
+			scrollbar-width: 0 !important;
+
+			&::-webkit-scrollbar {
+				display: none !important;
+			}
+		}
+	}
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+		)
+		rgb(var(--background-start-rgb));
+}
