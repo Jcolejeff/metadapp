@@ -16,15 +16,16 @@ import { useState } from "react";
 const ChainChangeTab = () => {
 	const [name, setName] = useState("");
 	return (
-		<Tabs defaultValue="account" className="w-[400px]">
-			<TabsList className="grid w-full grid-cols-2">
-				<TabsTrigger value="account">Account</TabsTrigger>
-				<TabsTrigger value="password">Password</TabsTrigger>
+		<Tabs defaultValue="buy" className="w-[400px]">
+			<TabsList className="grid w-full grid-cols-3">
+				<TabsTrigger value="buy">Buy</TabsTrigger>
+				<TabsTrigger value="sell">Sell </TabsTrigger>
+				<TabsTrigger value="limit">Limit</TabsTrigger>
 			</TabsList>
-			<TabsContent value="account">
+			<TabsContent value="buy">
 				<Card>
 					<CardHeader>
-						<CardTitle>Account</CardTitle>
+						<CardTitle>Buy</CardTitle>
 						<CardDescription>
 							Make changes to your account here. Click save when you&apos;re
 							done.
@@ -45,14 +46,14 @@ const ChainChangeTab = () => {
 						</div>
 					</CardContent>
 					<CardFooter>
-						<Button>Save changes</Button>
+						<Button>Buy</Button>
 					</CardFooter>
 				</Card>
 			</TabsContent>
-			<TabsContent value="password">
+			<TabsContent value="sell">
 				<Card>
 					<CardHeader>
-						<CardTitle>Password</CardTitle>
+						<CardTitle>Sell </CardTitle>
 						<CardDescription>
 							Change your password here. After saving, you&apos;ll be logged
 							out.
@@ -69,7 +70,31 @@ const ChainChangeTab = () => {
 						</div>
 					</CardContent>
 					<CardFooter>
-						<Button>Save password</Button>
+						<Button>Sell</Button>
+					</CardFooter>
+				</Card>
+			</TabsContent>
+			<TabsContent value="limit">
+				<Card>
+					<CardHeader>
+						<CardTitle>Limit</CardTitle>
+						<CardDescription>
+							Change your password here. After saving, you&apos;ll be logged
+							out.
+						</CardDescription>
+					</CardHeader>
+					<CardContent className="space-y-2">
+						<div className="space-y-1">
+							<Label htmlFor="current">Current password</Label>
+							<Input id="current" type="password" />
+						</div>
+						<div className="space-y-1">
+							<Label htmlFor="new">New password</Label>
+							<Input id="new" type="password" />
+						</div>
+					</CardContent>
+					<CardFooter>
+						<Button>Limit</Button>
 					</CardFooter>
 				</Card>
 			</TabsContent>

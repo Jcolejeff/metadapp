@@ -45,6 +45,7 @@ module.exports = {
 					foreground: "var(--primary-foreground)",
 
 					1: "#0B0F16",
+					2: "#0A53BE",
 				},
 
 				secondary: {
