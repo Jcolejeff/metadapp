@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} bg-primary-1	`}>
+			<body className={`${inter.className} bg-primary-1`}>
 				<ReduxProvider>{children}</ReduxProvider>
 			</body>
 		</html>

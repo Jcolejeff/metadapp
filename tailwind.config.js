@@ -1,11 +1,13 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: ["class"],
 	content: [
-		"./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-		"./partials/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-		"./app/**/*.{ts,tsx}",
+		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
-		"./content/**/*.{md,mdx}",
+		"./app/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}",
 	],
+	prefix: "",
 	theme: {
 		screens: {
 			xxs: "340px",
@@ -20,44 +22,21 @@ module.exports = {
 		},
 		fontFamily: {
 			lato: ["Lato", "sans-serif"],
-			jakarta: ["Plus Jakarta Sans Variable", "sans-serif"],
-			manrope: ["Manrope", "sans-serif"],
-			poppins: ["Poppins", "sans-serif"],
-			inter: ["Inter", "sans-serif"],
-			quicksand: ["Quicksand", "sans-serif"],
-
-			DmSans: ["DM Sans", "sans-serif"],
 		},
 		container: {
 			center: true,
+			padding: "2rem",
 			screens: {
-				lg: "1440px",
+				"2xl": "1400px",
 			},
 		},
 		extend: {
-			wordSpacing: {
-				sm: "0.25rem",
-				md: "0.5rem",
-				lg: "0.75rem",
-				xl: "1rem",
-			},
-			backgroundImage: {
-				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic":
-					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-			},
-			padding: {
-				"container-xl": "7.5rem",
-				"container-lg": "5rem",
-				"container-md": "3.5rem",
-				"container-base": "1.5rem",
-			},
-			margin: {
-				"container-xl": "7.5rem",
-				"container-lg": "5rem",
-				"container-base": "1.5rem",
-			},
 			colors: {
+				border: "hsl(var(--border))",
+				input: "hsl(var(--input))",
+				ring: "hsl(var(--ring))",
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
 				transparent: "transparent",
 				current: "currentColor",
 				white: "#ffffff",
@@ -66,17 +45,31 @@ module.exports = {
 					foreground: "var(--primary-foreground)",
 
 					1: "#0B0F16",
-					2: "#00AE50",
 				},
+
 				secondary: {
-					DEFAULT: "var(--secondary)",
-					1: "#F6F6F93D",
+					DEFAULT: "hsl(var(--secondary))",
+					foreground: "hsl(var(--secondary-foreground))",
 				},
-				success: {
-					1: "#005A44",
+				destructive: {
+					DEFAULT: "hsl(var(--destructive))",
+					foreground: "hsl(var(--destructive-foreground))",
 				},
-				info: {
-					1: "#FDA741",
+				muted: {
+					DEFAULT: "hsl(var(--muted))",
+					foreground: "hsl(var(--muted-foreground))",
+				},
+				accent: {
+					DEFAULT: "hsl(var(--accent))",
+					foreground: "hsl(var(--accent-foreground))",
+				},
+				popover: {
+					DEFAULT: "hsl(var(--popover))",
+					foreground: "hsl(var(--popover-foreground))",
+				},
+				card: {
+					DEFAULT: "hsl(var(--card))",
+					foreground: "hsl(var(--card-foreground))",
 				},
 			},
 			boxShadow: {
@@ -87,49 +80,24 @@ module.exports = {
 				5: "0px 2px 6px 4px rgba(50, 71, 92, 0.02), 0px 4px 9px 1px rgba(50, 71, 92, 0.04), 0px 2px 9px 0px rgba(50, 71, 92, 0.06)",
 				6: "0px 0px 40.793495178222656px 0px rgba(0, 0, 0, 0.10)",
 			},
-			backgroundImage: {
-				pattern: "url('/public/svgs/pattern.svg')",
-			},
-			transitionProperty: {
-				font: "font-size, transform",
+			borderRadius: {
+				lg: "var(--radius)",
+				md: "calc(var(--radius) - 2px)",
+				sm: "calc(var(--radius) - 4px)",
 			},
 			keyframes: {
 				"accordion-down": {
-					from: { height: 0 },
+					from: { height: "0" },
 					to: { height: "var(--radix-accordion-content-height)" },
 				},
 				"accordion-up": {
 					from: { height: "var(--radix-accordion-content-height)" },
-					to: { height: 0 },
-				},
-				bounce: {
-					"0%, 100%": { transform: "translateY(0)" },
-					"50%": { transform: "translateY(5px)" },
-				},
-				"collapsible-down": {
-					from: { height: "0" },
-					to: { height: "var(--radix-collapsible-content-height)" },
-				},
-				"collapsible-up": {
-					from: { height: "var(--radix-collapsible-content-height)" },
 					to: { height: "0" },
-				},
-				"pulse-loader": {
-					"0%": { opacity: "0" },
-					"50%": { transform: "scale(1.4)", opacity: "0.4" },
 				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
-				bounce: "bounce 1s  ease-in-out infinite",
-				"collapsible-down": "collapsible-down 0.2s ease-out",
-				"collapsible-up": "collapsible-up 0.2s ease-out",
-				"pulse-loader":
-					"pulse-loader 1000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite",
-			},
-			cursor: {
-				cardCursor: "url('/src/assets/svg/cardHoverCursor.svg'), pointer",
 			},
 		},
 	},
