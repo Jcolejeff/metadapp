@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Counter from "../components/counter";
+import ChainChangeTab from "@/components/tabs/chain-change-tab";
 export default function Home() {
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -7,6 +8,7 @@ export default function Home() {
 				Welcome to My Next.js App
 			</h1>
 			<Counter />
+			<ChainChangeTab />
 		</main>
 	);
 }
