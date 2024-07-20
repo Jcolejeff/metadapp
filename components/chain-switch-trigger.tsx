@@ -28,7 +28,7 @@ const ChainSwitchTrigger = ({ switchTab, listOfChains }: IProps) => {
   }
 
   return (
-    <div className=" hidden">
+    <div className=" ">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-[100%] ">
           <FormField

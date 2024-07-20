@@ -9,7 +9,7 @@ import ChainSwitchTrigger from '@/components/chain-switch-trigger';
 import TopNav from '@/components/partials/top-nav';
 import MarketTradesTable from '@/components/tables/market-trades';
 import ChainChangeTab from '@/components/tabs/chain-change-tab';
-import { TradingViewWidget } from '@/components/trading-view-widget';
+import TradingViewWidget from '@/components/trading-view-widget';
 
 import { API_URL } from '@/lib/constants';
 import { WEBSOCKET_URL } from '@/lib/constants';

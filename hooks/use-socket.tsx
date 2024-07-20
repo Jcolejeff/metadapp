@@ -9,10 +9,13 @@ const useWebSocketConnection = (transactionId = '1233') => {
     let socket: Socket | null = null;
 
     socket = io(WEBSOCKET_URL, {
-      extraHeaders: {
-        'x-api-key': TOKEN,
+      auth: {
+        token: `Bearer ${TOKEN}`,
       },
-      query: { transaction_id: transactionId },
+      extraHeaders: {
+        ws_token: 'Y3NhY3NhY3NhY2E7Y2Fpc2pjaWFzaGM4dWFjczB1OGM5dXNhOWNhdXNjOWFzdWM',
+      },
+      // query: { transaction_id: transactionId },
       transports: ['websocket'],
     });
 
