@@ -1,44 +1,51 @@
+'use client';
+
 import { useEffect } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-import { WEBSOCKET_URL } from '@/lib/constants';
-import { TOKEN } from '@/lib/constants';
+const WEBSOCKET_URL = 'wss://v1-dex-ws.evmtracker.com';
+const TOKEN_KEY = 'Y3NhY3NhY3NhY2E7Y2Fpc2pjaWFzaGM4dWFjczB1OGM5dXNhOWNhdXNjOWFzdWM';
 
-const useWebSocketConnection = (transactionId = '1233') => {
+const useDexMarketSocket = () => {
   useEffect(() => {
-    let socket: Socket | null = null;
-
-    socket = io(WEBSOCKET_URL, {
+    const socket: Socket = io(WEBSOCKET_URL, {
       auth: {
-        token: `Bearer ${TOKEN}`,
+        token: TOKEN_KEY,
       },
       extraHeaders: {
-        ws_token: 'Y3NhY3NhY3NhY2E7Y2Fpc2pjaWFzaGM4dWFjczB1OGM5dXNhOWNhdXNjOWFzdWM',
+        'Token-Key': TOKEN_KEY,
       },
-      // query: { transaction_id: transactionId },
       transports: ['websocket'],
     });
 
     socket.on('connect', () => {
-      console.log('Connected to socket server');
+      console.log('Connected to DexMarket WebSocket');
     });
 
-    socket.on('payment.received', (data: any) => {
-      console.log('Payment Received:', data);
+    socket.on('eth_swap_txn', (data: any) => {
+      console.log('ETH Swap Transaction:', data);
+    });
+
+    socket.on('bsc_swap_txn', (data: any) => {
+      console.log('BSC Swap Transaction:', data);
+    });
+
+    socket.on('blast_swap_txn', (data: any) => {
+      console.log('Blast Swap Transaction:', data);
     });
 
     socket.on('disconnect', () => {
-      console.log('Disconnected from socket server');
+      console.log('Disconnected from DexMarket WebSocket');
     });
 
     socket.on('error', (error: any) => {
-      console.error('Error:', error);
+      console.error('WebSocket Error:', error);
     });
 
     return () => {
-      if (socket) socket.disconnect();
+      socket.disconnect();
     };
-  }, [transactionId]);
+  }, []);
 };
 
-export default useWebSocketConnection;
+export default useDexMarketSocket;

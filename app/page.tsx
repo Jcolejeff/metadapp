@@ -21,7 +21,7 @@ import Counter from '../components/counter';
 
 export default function Home() {
   const { data } = useMarketTrades('eth');
-  useWebSocketConnection('1233');
+  useWebSocketConnection();
   console.log('data', { data });
   return (
     <main className="container   min-h-screen ">
