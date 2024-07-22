@@ -1,29 +1,32 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import counterSlice from "../features/counter/counter-slice";
-import authSlice from "@/features/auth/authSlice";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+
+import authSlice from '@/features/auth/authSlice';
+
+import storage from 'redux-persist/lib/storage';
+
+import walletTradesSlice from '../features/wallet-trades/wallet-trades-slice';
 
 const rootReducer = combineReducers({
-	counter: counterSlice.reducer,
-	auth: authSlice.reducer,
+  walletTrades: walletTradesSlice.reducer,
+  auth: authSlice.reducer,
 });
 
 const persistConfig = {
-	key: "root",
-	storage,
-	whitelist: ["counter"], // only counter will be persisted
+  key: 'root',
+  storage,
+  whitelist: ['walletTrades'],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-	reducer: persistedReducer,
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: ["persist/PERSIST"],
-			},
-		}),
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST'],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);

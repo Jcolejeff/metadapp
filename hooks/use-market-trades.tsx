@@ -4,14 +4,14 @@ import { useParams } from 'next/navigation';
 
 import { $http } from '@/lib/http';
 
-import { IGetTrades } from '@/types';
+import { IGetTrades, WalletResponse } from '@/types';
 
 export const useMarketTrades = (chain = 'eth') => {
   return useQuery({
     queryKey: [chain, 'get-market-trades'],
     queryFn: async () => {
       return (
-        await $http.get<IGetTrades>(
+        await $http.get<WalletResponse>(
           `/dex/wallet/list?page=1&page_size=10&orderBy=30d.totalSoldTxns&sort=desc&chain=${chain}`,
           {
             params: { organization_id: '29929' },
@@ -19,7 +19,5 @@ export const useMarketTrades = (chain = 'eth') => {
         )
       ).data;
     },
-
-    // enabled: !!currentWorkspace && !!assetId,
   });
 };

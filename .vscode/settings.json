@@ -1,5 +1,12 @@
 {
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 
-	"cSpell.words": ["Metadapp"]
+	"cSpell.words": [
+		"Metadapp"
+	],
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#253206",
+		"titleBar.activeBackground": "#344609",
+		"titleBar.activeForeground": "#F7FCE9"
+	}
 }
