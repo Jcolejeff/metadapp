@@ -27,11 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-primary-1`}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <ReduxProvider>
+        <ReduxProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
             <ReactQueryProviders>{children}</ReactQueryProviders>
-          </ReduxProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </ReduxProvider>
         <Toaster richColors />
       </body>
     </html>
